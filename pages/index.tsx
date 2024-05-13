@@ -1,12 +1,24 @@
+import { useEffect, useState } from 'react';
 import { Button, Htag, P, Tag } from '../components';
 import Image from 'next/image';
 
 export default function Home() {
 
+  const [counter, setCounter] = useState<number>(0)
+
+  useEffect(() => {
+    console.log('Counter ' + counter)
+
+    return function cleanup() {
+      console.log('unmount')
+    }
+  }, [counter])
+ 
+
   return (
     <>
-      <Htag tag = 'h1'>Заголовок</Htag>
-      <Button appearance='primary' className='new' arrow='down'>кнопка</Button>
+      <Htag tag = 'h1'>Заголовок {counter}</Htag>
+      <Button appearance='primary' className='new' arrow='down' onClick={() => setCounter((counter) => counter + 1)}>кнопка</Button>
       <Button appearance='ghost' arrow='right'>кнопка</Button>
       <Image
         src='/vercel.svg'
