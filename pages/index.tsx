@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Button, Htag, P, Rating, Tag } from '../components';
 import Image from 'next/image';
+import { withLayout } from '@/layout/Layout';
 
-export default function Home() {
+function Home() {
 
   const [counter, setCounter] = useState<number>(0)
   const [rating, setRating] = useState<number>(4)
@@ -48,3 +49,6 @@ export default function Home() {
     </>
   );
 }
+
+
+export default withLayout(Home)
